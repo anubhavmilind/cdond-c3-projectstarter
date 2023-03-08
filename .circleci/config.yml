@@ -177,7 +177,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["95:71:bc:97:97:ea:a7:9c:3c:d8:4f:cc:1d:c9:c1:81:65:0e:30:81"]
+          fingerprints: ["15:61:8d:94:4a:f5:ba:2a:9b:09:fc:ea:e9:e6:31:6a"]
       - run:
           name: Install dependencies
           command: |
@@ -238,7 +238,7 @@ jobs:
             if grep -q 'has been executed successfully.' migrations_dump.txt
             then
               echo 0
-              touch ~/Project3/.circleci/db_migration_success
+              touch ~/.circleci/db_migration_success
             fi
       - destroy-environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
@@ -292,7 +292,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["95:71:bc:97:97:ea:a7:9c:3c:d8:4f:cc:1d:c9:c1:81:65:0e:30:81"]
+          fingerprints: ["15:61:8d:94:4a:f5:ba:2a:9b:09:fc:ea:e9:e6:31:6a"]
       - run:
           name: Install dependencies
           command: |
@@ -311,7 +311,7 @@ jobs:
             tar -C backend -czvf artifact.tar.gz .
             cd .circleci/ansible
             echo "Contents  of the inventory.txt file is -----$(cat inventory.txt)"
-            ansible-playbook -i ./Project3/.circleci/ansible/inventory.txt ./Project3/.circleci/ansible/deploy-backend.yml
+            ansible-playbook -i inventory.txt deploy-backend.yml
       - destroy-environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
       - revert-migrations:
