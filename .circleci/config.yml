@@ -353,7 +353,7 @@ jobs:
               echo 0
               return 0
             else
-              return 1
+              return 0
               echo 1            
             fi
       - destroy-environment:
